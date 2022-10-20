@@ -1,41 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Delta.MainPage">
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:Delta.Views"
+            x:Class="Delta.MainPage">
+<!--Diesen Teil der Seite nur sichtbar machen, wenn nicht eingeloggt.-->
+    <!--<ContentPage>
+        <ScrollView>
+            <Grid
+                RowDefinitions="*,*"
+                RowSpacing="25"
+                VerticalOptions="Center"
+                Padding="0,0">
+            
+                <Label Grid.Row="0"
+                    Text="Willkommen bei Delta!"
+                    FontSize="38"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>
-
-</ContentPage>
+                <Label Grid.Row="1"
+                    Text="Bitte loggen Sie sich ein oder erstellen Sie einen neuen Account, um fortfahren zu können."
+                    FontSize="24"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage>-->       
+<!--Diesen Teil der Seite nur sichtbar machen, wenn eingeloggt.-->
+    <TabBar CurrentItem="{x:Reference todayData}">
+        <ShellContent Title="Letzte Woche"
+                      ContentTemplate="{DataTemplate views:LastWeekDataPage}"/>
+        <ShellContent Title="Gestern"
+            ContentTemplate="{DataTemplate views:YesterdayDataPage}"/>
+        <ShellContent Title="Heute"
+                      x:Name="todayData"
+            ContentTemplate="{DataTemplate views:TodayDataPage}"/>
+        <ShellContent Title="Diese Woche"
+            ContentTemplate="{DataTemplate views:ThisWeekDataPage}"/>
+    </TabBar>
+</Shell>
