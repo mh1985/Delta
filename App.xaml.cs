@@ -1,4 +1,6 @@
-﻿namespace Delta;
+﻿using Delta.Views;
+
+namespace Delta;
 
 public partial class App : Application
 {

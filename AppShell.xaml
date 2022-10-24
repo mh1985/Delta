@@ -12,14 +12,49 @@
         Route="MainPage" />
 
     <ShellContent
-        Title="TestPage"
-        ContentTemplate="{DataTemplate views:TestPage}"
-        Route="TestPage" />
+        Title="Medikamente"
+        ContentTemplate="{DataTemplate views:DrugPage}"
+        Route="DrugPage" />
+
+    <ShellContent
+        Title="Dokumente"
+        ContentTemplate="{DataTemplate views:DocumentPage}"
+        Route="DocumentPage" />
+
+    <ShellContent
+        Title="Tag auswählen"
+        ContentTemplate="{DataTemplate views:DummySelectDayPage}"
+        Route="DummySelectDayPage" />
+
+    <ShellContent
+        Title="Woche auswählen"
+        ContentTemplate="{DataTemplate views:DummySelectWeekPage}"
+        Route="DummySelectWeekPage" />
+
+    <ShellContent
+        Title="Monat auswählen"
+        ContentTemplate="{DataTemplate views:DummySelectMonthPage}"
+        Route="DummySelectMonthPage" />
+
+    <ShellContent
+        Title="Logout"
+        ContentTemplate="{DataTemplate views:LogoutPage}"
+        Route="LogoutPage" />
 
     <Shell.FlyoutHeader>
-        <Grid>
-            <Label Text="Vorname2"
-                   FontSize="16"/>
+        <Grid   ColumnDefinitions="80,*"
+                ColumnSpacing="5"
+                RowDefinitions="*,*"
+                RowSpacing="0"
+                VerticalOptions="Center"
+                Padding="0,0">
+            <Label Grid.Column="2"
+                   Text="Vorname"
+                   FontSize="18"/>
+            <Label Grid.Column="2"
+                   Grid.Row="2"
+                   Text="Nachname"
+                   FontSize="18"/>
         </Grid>
     </Shell.FlyoutHeader>
 </Shell>

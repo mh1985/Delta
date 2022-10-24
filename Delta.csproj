@@ -56,7 +56,28 @@
 	  <MauiXaml Update="SideMenu.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\DocumentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DocumentView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DrugPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DummySelectDayPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DummySelectMonthPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DummySelectWeekPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\LastWeekDataPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LogoutPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\TestPage.xaml">
@@ -71,6 +92,13 @@
 	  <MauiXaml Update="Views\YesterdayDataPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\TestImagesXRay\foot1.png" />
+	  <MauiImage Include="Resources\Images\TestImagesXRay\foot2.png" />
+	  <MauiImage Include="Resources\Images\TestImagesXRay\foot3.png" />
+	  <MauiImage Include="Resources\Images\TestImagesXRay\foot4.png" />
 	</ItemGroup>
 
 </Project>

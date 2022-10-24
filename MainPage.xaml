@@ -31,11 +31,11 @@
         <ShellContent Title="Letzte Woche"
                       ContentTemplate="{DataTemplate views:LastWeekDataPage}"/>
         <ShellContent Title="Gestern"
-            ContentTemplate="{DataTemplate views:YesterdayDataPage}"/>
+                      ContentTemplate="{DataTemplate views:YesterdayDataPage}"/>
         <ShellContent Title="Heute"
                       x:Name="todayData"
-            ContentTemplate="{DataTemplate views:TodayDataPage}"/>
+                      ContentTemplate="{DataTemplate views:TodayDataPage}"/>
         <ShellContent Title="Diese Woche"
-            ContentTemplate="{DataTemplate views:ThisWeekDataPage}"/>
+                      ContentTemplate="{DataTemplate views:ThisWeekDataPage}"/>
     </TabBar>
 </Shell>
