@@ -1,52 +1,57 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Delta.Model"
+             xmlns:viewmodel="clr-namespace:Delta.ViewModel"
+             x:DataType="viewmodel:DrugViewModel"
              x:Class="Delta.Views.DrugPage"
-             Title="DrugPage">
+             Title="{Binding Title}">
 
-    <VerticalStackLayout>
-            <Label Text="Diese Seite zeigt die vom Patienten/Arzt eingetragenen Medikamente und ihre Dosierung."
-                       VerticalOptions="Center" 
-                       HorizontalOptions="Center" />
+    <Grid RowDefinitions="*,Auto">
 
-                <Grid Padding="10"
-                      ColumnSpacing="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="25" />
-                        <RowDefinition Height="25" />
-                        <RowDefinition Height="25" />
-                        <RowDefinition Height="25" />
-            </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*" />
-                        <ColumnDefinition Width="50*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.ColumnSpan="2"
-                           Text="Medikament 1"
-                           FontAttributes="Bold"
-                           HorizontalOptions="Center"/>
-                    <Label Grid.Row="1"
-                           Text="1x Tablette"
-                           HorizontalOptions="End"/>
-                    <Label Grid.Row="1"
-                           Grid.Column="1"
-                           Text="3x täglich"
-                           HorizontalOptions="Start"/>
-                    
-                    <Label Grid.ColumnSpan="2"
-                           Grid.Row="2"
-                            Text="Medikament 2"
-                            FontAttributes="Bold"
-                            HorizontalOptions="Center"/>
-                    <Label Grid.Row="3"
-                            Text="1x 10ml"
-                            HorizontalOptions="End"/>
-            <Label Grid.Row="3"
-                            Grid.Column="1"
-                            Text="Mittags"
-                            HorizontalOptions="Start"/>
-        </Grid>
+        <CollectionView BackgroundColor="Transparent"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Drugs}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Drug">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="80">
+                            <Grid Padding="0"
+                                  ColumnDefinitions="Auto,*"
+                                  RowDefinitions="*,Auto">
+                                <Label Text="{Binding Name}"
+                                       HorizontalOptions="Center"
+                                       Grid.ColumnSpan="2"/>
 
-        <Label Text="Die Medikamente sollen in einer CollectionView angezeigt werden."/>
-    </VerticalStackLayout>
+                                <HorizontalStackLayout Grid.Row="1"
+                                                       Spacing="5">
+                                    <Label Text="{Binding Dose, StringFormat='{0}x'}"/>
+                                    <Label Text="{Binding Form}"/>
+                                    <Label Text="{Binding Frequency,StringFormat='{0}x'}"/>
+                                    <Label Text="{Binding Frequency2}"/>
+                                </HorizontalStackLayout>
+                                
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+
+        <Button Text="Medikamente"
+                Command="{Binding GetDrugsCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Margin="8"/>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+
+    </Grid>
 </ContentPage>

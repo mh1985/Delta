@@ -23,8 +23,8 @@
 
     <ShellContent
         Title="Tag auswählen"
-        ContentTemplate="{DataTemplate views:DummySelectDayPage}"
-        Route="DummySelectDayPage" />
+        ContentTemplate="{DataTemplate views:TodayDataPage}"
+        Route="TodayDataPage" />
 
     <ShellContent
         Title="Woche auswählen"

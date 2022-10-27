@@ -1,13 +1,73 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Delta.Model"
+             xmlns:viewmodel="clr-namespace:Delta.ViewModel"
+             x:DataType="viewmodel:TodayDataViewModel"
              x:Class="Delta.Views.TodayDataPage"
-             Title="Heute">
-<!-- Dummy-Page -->
-    <VerticalStackLayout>
-        <Label 
-            Text="Diese Seite zeigt die Daten von heute!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="{Binding Title}">
+
+    <Grid RowDefinitions="*,Auto">
+        
+        <CollectionView BackgroundColor="Transparent"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding TodayDatas}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:TodayData">
+                    <Grid Padding="10">
+                    <Frame HeightRequest="80"
+                           Padding="10">
+                            <Grid Padding="0"
+                                  ColumnDefinitions="Auto,*"
+                                  RowDefinitions="*,Auto,Auto">
+                                <Label Text="{Binding Name}"
+                                       HorizontalOptions="Center"
+                                       Grid.ColumnSpan="2"/>
+
+                                <Grid Grid.Row="1"
+                                      Grid.ColumnSpan="2"
+                                      ColumnDefinitions="*,*,*"
+                                      RowDefinitions="Auto, Auto"
+                                      ColumnSpacing="10">
+                                    <Label Text="Min."/>
+                                    <Label Text="{Binding Min}"
+                                           Grid.Row="1"/>
+                                    <Label Text="⌀"
+                                           Grid.Column="1"
+                                           HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Average}"
+                                           Grid.Column="1"
+                                           Grid.Row="1"
+                                           HorizontalOptions="Center"/>
+                                    <Label Text="Max."
+                                           Grid.Column="2"
+                                           HorizontalOptions="End"/>
+                                    <Label Text="{Binding Max}"
+                                           Grid.Column="2"
+                                           Grid.Row="1"
+                                           HorizontalOptions="End"/>
+                            </Grid>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <Button Text="Get Data"
+                Command="{Binding GetTodayDatasCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Margin="8"/>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+
+    </Grid>
 </ContentPage>

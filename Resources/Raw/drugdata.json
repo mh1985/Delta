@@ -1,0 +1,23 @@
+﻿[
+  {
+    "Name": "Medikament 1",
+    "Dose": "1",
+    "Form": "Tablette",
+	"Frequency": "3",
+	"Frequency2": "Täglich"
+  },
+  {
+    "Name": "Medikament 2",
+    "Dose": "2",
+    "Form": "Kappe",
+	"Frequency": "1",
+	"Frequency2": "Täglich"
+  },
+  {
+    "Name": "Medikament 3",
+    "Dose": "2",
+    "Form": "Tabletten",
+	"Frequency": "1",
+	"Frequency2": "Woche"
+  }
+]

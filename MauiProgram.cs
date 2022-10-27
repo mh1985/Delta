@@ -1,4 +1,7 @@
-﻿namespace Delta;
+﻿using Delta.Services;
+using Delta.Views;
+
+namespace Delta;
 
 public static class MauiProgram
 {
@@ -13,6 +16,15 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+		builder.Services.AddSingleton<DrugService>();
+		builder.Services.AddSingleton<TodayDataService>();
+
+		builder.Services.AddSingleton<DrugViewModel>();
+		builder.Services.AddSingleton<TodayDataViewModel>();
+
+		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<DrugPage>();
+		builder.Services.AddSingleton<TodayDataPage>();
 
 		return builder.Build();
 	}

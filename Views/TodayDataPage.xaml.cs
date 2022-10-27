@@ -2,8 +2,9 @@ namespace Delta.Views;
 
 public partial class TodayDataPage : ContentPage
 {
-	public TodayDataPage()
+	public TodayDataPage(TodayDataViewModel viewModel)
 	{
 		InitializeComponent();
-	}
+        BindingContext = viewModel;
+    }
 }

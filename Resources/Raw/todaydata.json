@@ -1,0 +1,23 @@
+﻿[
+  {
+    "Name": "Wert #1",
+    "Min": "125",
+    "Average": "150",
+	"Max": "180",
+	"Unit": "mg/l"
+  },
+  {
+    "Name": "Wert #2",
+    "Min": "0,5",
+    "Average": "0,7",
+	"Max": "1",
+	"Unit": "h/u"
+  },
+  {
+    "Name": "Wert #3",
+    "Min": "75",
+    "Average": "80",
+	"Max": "110",
+	"Unit": "mg/l"
+  }
+]

@@ -2,8 +2,9 @@ namespace Delta.Views;
 
 public partial class DrugPage : ContentPage
 {
-	public DrugPage()
+	public DrugPage(DrugViewModel viewModel)
 	{
 		InitializeComponent();
+		BindingContext = viewModel;
 	}
 }
