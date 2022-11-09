@@ -62,6 +62,9 @@
 	  <MauiXaml Update="Views\DocumentView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\DrugAddPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\DrugPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

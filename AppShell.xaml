@@ -6,10 +6,37 @@
     xmlns:local="clr-namespace:Delta"
     xmlns:views="clr-namespace:Delta.Views">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.FlyoutHeader>
+        <Grid   ColumnDefinitions="80,*"
+                ColumnSpacing="5"
+                RowDefinitions="*,*"
+                RowSpacing="0"
+                VerticalOptions="Center"
+                Padding="0,0">
+            <Label Grid.Column="2"
+                   Text="Vorname"
+                   FontSize="18"/>
+            <Label Grid.Column="2"
+                   Grid.Row="2"
+                   Text="Nachname"
+                   FontSize="18"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems"
+                CurrentItem="{x:Reference todayData}">
+        <Tab Title="Daten">
+            <ShellContent Title="Letzte Woche"
+                      ContentTemplate="{DataTemplate views:LastWeekDataPage}"/>
+            <ShellContent Title="Gestern"
+                      ContentTemplate="{DataTemplate views:YesterdayDataPage}"/>
+            <ShellContent Title="Heute"
+                      x:Name="todayData"
+                      ContentTemplate="{DataTemplate views:TodayDataPage}"/>
+            <ShellContent Title="Diese Woche"
+                      ContentTemplate="{DataTemplate views:ThisWeekDataPage}"/>
+        </Tab>
+    </FlyoutItem>
 
     <ShellContent
         Title="Medikamente"
@@ -23,7 +50,7 @@
 
     <ShellContent
         Title="Tag auswählen"
-        ContentTemplate="{DataTemplate views:TodayDataPage}"
+        ContentTemplate="{DataTemplate views:DummySelectDayPage}"
         Route="TodayDataPage" />
 
     <ShellContent
@@ -41,20 +68,4 @@
         ContentTemplate="{DataTemplate views:LogoutPage}"
         Route="LogoutPage" />
 
-    <Shell.FlyoutHeader>
-        <Grid   ColumnDefinitions="80,*"
-                ColumnSpacing="5"
-                RowDefinitions="*,*"
-                RowSpacing="0"
-                VerticalOptions="Center"
-                Padding="0,0">
-            <Label Grid.Column="2"
-                   Text="Vorname"
-                   FontSize="18"/>
-            <Label Grid.Column="2"
-                   Grid.Row="2"
-                   Text="Nachname"
-                   FontSize="18"/>
-        </Grid>
-    </Shell.FlyoutHeader>
 </Shell>

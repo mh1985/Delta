@@ -27,7 +27,7 @@
         </ScrollView>
     </ContentPage>-->       
 <!--Diesen Teil der Seite nur sichtbar machen, wenn eingeloggt.-->
-    <TabBar CurrentItem="{x:Reference todayData}">
+    <!--<TabBar CurrentItem="{x:Reference todayData}">
         <ShellContent Title="Letzte Woche"
                       ContentTemplate="{DataTemplate views:LastWeekDataPage}"/>
         <ShellContent Title="Gestern"
@@ -37,5 +37,5 @@
                       ContentTemplate="{DataTemplate views:TodayDataPage}"/>
         <ShellContent Title="Diese Woche"
                       ContentTemplate="{DataTemplate views:ThisWeekDataPage}"/>
-    </TabBar>
+    </TabBar>-->
 </Shell>

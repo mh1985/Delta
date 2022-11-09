@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Delta.Views.DrugAddPage"
+             xmlns:viewmodel="clr-namespace:Delta.ViewModel"
+             x:DataType="viewmodel:DrugViewModel"
+             Title="Medikament hinzufügen">
+
+    <VerticalStackLayout>
+        <Entry Text="{Binding AddDrugName}"
+               Placeholder="Name des Medikaments"
+               Margin="10"
+               HorizontalTextAlignment="Center"/>
+        <HorizontalStackLayout
+            HeightRequest="50"
+            Margin="10"
+            Spacing="10">
+            <Entry Text="{Binding AddDrugDose}"
+                   Placeholder="Menge"
+                   HorizontalTextAlignment="Center"/>
+            <Picker Title="Einnahmeform"
+                    SelectedItem="{Binding AddDrugForm}"
+                    HorizontalTextAlignment="Center">
+                <Picker.Items>
+                    <x:String>Tablette</x:String>
+                    <x:String>Kapsel</x:String>
+                    <x:String>Tropfen</x:String>
+                </Picker.Items>
+            </Picker>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout
+            HeightRequest="50"
+            Margin="10"
+            Spacing="10">
+            <Entry Text="{Binding AddDrugFrequency}"
+                   Placeholder="Häufigkeit"/>
+            <Picker Title="Häufigkeit"
+                    SelectedItem="{Binding AddDrugFrequency2}"
+                    HorizontalTextAlignment="Center">
+                <Picker.Items>
+                    <x:String>Täglich</x:String>
+                    <x:String>Wöchentlich</x:String>
+                    <x:String>Alle zwei Tage</x:String>
+                </Picker.Items>
+            </Picker>
+        </HorizontalStackLayout>
+        <Button Text="Hinzufügen"
+                Command="{Binding AddDrugsCommand}"
+                Margin="8"/>
+    </VerticalStackLayout>
+</ContentPage>

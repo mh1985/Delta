@@ -22,7 +22,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DrugViewModel>();
 		builder.Services.AddSingleton<TodayDataViewModel>();
 
-		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddTransient<MainPage>();
+		builder.Services.AddTransient<DrugAddPage>();
 		builder.Services.AddSingleton<DrugPage>();
 		builder.Services.AddSingleton<TodayDataPage>();
 
