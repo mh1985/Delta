@@ -1,4 +1,4 @@
-﻿using AndroidX.Navigation;
+﻿//using AndroidX.Navigation;
 using Delta.Model;
 using Delta.Services;
 using Delta.Views;
@@ -61,7 +61,7 @@ namespace Delta.ViewModel
             try
             {
                 await this.GetDrugsAsync();
-                drugService.AddDrug(addDrugName, addDrugDose, addDrugForm, addDrugFrequency, addDrugFrequency2);
+                await drugService.AddDrug(addDrugName, addDrugDose, addDrugForm, addDrugFrequency, addDrugFrequency2);
                 await this.GetDrugsAsync(); //Ersetzen durch Refresh
             }
 

@@ -103,5 +103,9 @@
 	  <MauiImage Include="Resources\Images\TestImagesXRay\foot3.png" />
 	  <MauiImage Include="Resources\Images\TestImagesXRay\foot4.png" />
 	</ItemGroup>
+	
+	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<DefineConstants>WINDOWS</DefineConstants>
+	</PropertyGroup>
 
 </Project>

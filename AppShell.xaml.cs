@@ -1,4 +1,6 @@
-﻿namespace Delta;
+﻿using Delta.Services;
+
+namespace Delta;
 
 public partial class AppShell : Shell
 {
@@ -6,6 +8,6 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 
-		Routing.RegisterRoute(nameof(Views.DrugAddPage), typeof(Views.DrugAddPage));
+        Routing.RegisterRoute(nameof(Views.DrugAddPage), typeof(Views.DrugAddPage));
 	}
 }
