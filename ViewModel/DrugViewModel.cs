@@ -63,6 +63,8 @@ namespace Delta.ViewModel
                 await this.GetDrugsAsync();
                 await drugService.AddDrug(addDrugName, addDrugDose, addDrugForm, addDrugFrequency, addDrugFrequency2);
                 await this.GetDrugsAsync(); //Ersetzen durch Refresh
+
+                addDrugName = addDrugDose = addDrugForm = addDrugFrequency = addDrugFrequency2 = null;
             }
 
             catch (Exception ex)

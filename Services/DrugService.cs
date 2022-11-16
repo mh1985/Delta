@@ -39,7 +39,7 @@ namespace Delta.Services
 
 #if WINDOWS
             //Öffnet lokale Datei auf der Festplatte (nur Windows)
-            using (StreamReader r = new StreamReader(@"D:\drugdata.json"))
+            using (StreamReader r = new StreamReader(@"C:\delta\drugdata.json"))
             {
                 string contents = await r.ReadToEndAsync();
                 drugList = JsonSerializer.Deserialize<List<Drug>>(contents);
@@ -79,19 +79,24 @@ namespace Delta.Services
             drugList.Add(drug);
 
 #if WINDOWS
-            string targetFile = Path.Combine(@"D:\drugdata.json");
+            string targetFile = Path.Combine(@"C:\delta\drugdata.json");
+            //Löschen der Datei damit keine Reste bleiben, falls die neue Liste kürzer ist als zu Beginn.
+            System.IO.File.Delete(targetFile);
             using FileStream outputStream = System.IO.File.OpenWrite(targetFile);
             using StreamWriter sw = new StreamWriter(outputStream);
             await sw.WriteAsync(JsonSerializer.Serialize(drugList));
 
 #else
             string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, "drugdata.json");
+            //Löschen der Datei damit keine Reste bleiben, falls die neue Liste kürzer ist als zu Beginn.
+            System.IO.File.Delete(targetFile);
             using FileStream outputStream = System.IO.File.OpenWrite(targetFile);
             using StreamWriter streamWriter = new StreamWriter(outputStream);
             await streamWriter.WriteAsync(JsonSerializer.Serialize(drugList));
 #endif
             return;
         }
+
         /* 
          *  Diese Methode wird aufgerufen, falls keine drugdata.json Datei im App-Verzeichnis.
          *  Es wird die Musterdatei drugdata.json aus dem App-Package geöffnet, eine Drug-Liste erstellt

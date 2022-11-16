@@ -12,7 +12,7 @@
                Margin="10"
                HorizontalTextAlignment="Center"/>
         <HorizontalStackLayout
-            HeightRequest="50"
+            HeightRequest="40"
             Margin="10"
             Spacing="10">
             <Entry Text="{Binding AddDrugDose}"
@@ -29,12 +29,12 @@
             </Picker>
         </HorizontalStackLayout>
         <HorizontalStackLayout
-            HeightRequest="50"
+            HeightRequest="40"
             Margin="10"
             Spacing="10">
             <Entry Text="{Binding AddDrugFrequency}"
                    Placeholder="Häufigkeit"/>
-            <Picker Title="Häufigkeit"
+            <Picker Title="Häufigkeit wählen"
                     SelectedItem="{Binding AddDrugFrequency2}"
                     HorizontalTextAlignment="Center">
                 <Picker.Items>
