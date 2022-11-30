@@ -10,6 +10,8 @@ public partial class App : Application
 
 		MainPage = new AppShell();
 
+        //Korrigiert den Fehler, dass bei einem Picker der Titel über dem Picker steht,
+        //statt als "Default-Element".
 #if WINDOWS10_0_19041_0_OR_GREATER
     Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping(nameof(IPicker.Title), (handler, view) =>
     {

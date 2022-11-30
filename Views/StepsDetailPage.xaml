@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Delta.Model"
+             xmlns:viewmodel="clr-namespace:Delta.ViewModel"
+             x:Class="Delta.Views.StepsDetailPage"
+             x:DataType="viewmodel:StepsDetailViewModel"
+             Title="{Binding Title}">
+
+    <RefreshView
+        Command="{Binding GetStepsThisMonthCommand}"
+        CommandParameter="12"
+        IsRefreshing="{Binding IsRefreshing}">
+        <CollectionView BackgroundColor="Transparent"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Stepss}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Steps">
+                    <Frame BorderColor="Gray"
+                           CornerRadius="10"
+                           Padding="10"
+                           Margin="15">
+                        <VerticalStackLayout>
+                            <Grid RowDefinitions="15,25,30,*"
+                                  ColumnDefinitions="Auto,*">
+                                <Label Text="{Binding Date}"
+                                       FontSize="14"
+                                       Grid.ColumnSpan="2"
+                                       Grid.Row="0"
+                                       HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Stepsleft, StringFormat='{0} Schritte noch bis:'}"
+                                       FontSize="20"
+                                       Grid.Column="0"
+                                       Grid.Row="1"
+                                       HorizontalTextAlignment="Start"/>
+                                <Image Source="balkendiagramm_beispiel.png"
+                                       Grid.Row="2"
+                                       Grid.ColumnSpan="2"/>
+                                <Label x:DataType="viewmodel:BaseViewModel"
+                                       Text="{Binding targetsteps}"
+                                       FontSize="20"
+                                       Grid.Column="0"
+                                       HorizontalTextAlignment="End"/>
+                            </Grid>
+                            <Grid RowDefinitions="*"
+                                  ColumnDefinitions="20,*"
+                                  ColumnSpacing="5"
+                                  x:DataType="model:Steps">
+                                <Image Source="distance.png"
+                                   HeightRequest="20"
+                                   WidthRequest="20"/>
+                                <Label Text="{Binding Walkdistance,StringFormat='{0} km'}"
+                                   Grid.Column="1"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

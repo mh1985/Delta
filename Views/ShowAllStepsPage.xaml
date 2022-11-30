@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Delta.Model"
+             xmlns:viewmodel="clr-namespace:Delta.ViewModel"
+             x:DataType="viewmodel:ShowAllStepsViewModel"
+             x:Class="Delta.Views.ShowAllStepsPage"
+             Title="ShowAllStepsPage">
+    <Grid RowDefinitions="*,Auto"
+          ColumnDefinitions="*,*">
+        <CollectionView BackgroundColor="Transparent"
+                            Grid.ColumnSpan="2"
+                            ItemsSource="{Binding Stepss}"
+                            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Steps">
+                    <HorizontalStackLayout>
+                        <Label Text="Tag"/>
+                        <Label Text="{Binding Id}"/>
+                        <Label Text="{Binding Date}"/>
+                        <Label Text="{Binding Totalsteps}"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Grid RowDefinitions="*"
+              ColumnDefinitions="*,*"
+              Grid.Row="1">
+            <Button Text="Get Data"
+                Command="{Binding GetStepssCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Column="0"
+                Margin="8"/>
+            <Button Text="Delete DB"
+                Command="{Binding DeleteTableCommand}"
+                Grid.Column="1"
+                Margin="8"
+                IsEnabled="{Binding IsNotBusy}"/>    
+        </Grid>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+    </Grid>
+</ContentPage>

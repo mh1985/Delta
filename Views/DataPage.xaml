@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:model="clr-namespace:Delta.Model"
+             xmlns:viewmodel="clr-namespace:Delta.ViewModel"
+             x:DataType="viewmodel:DataPageViewModel"
+             x:Class="Delta.Views.DataPage"
+             Title="{Binding Title}">
+
+    <RefreshView Command="{Binding RefreshCommand}"
+                 IsRefreshing="{Binding IsRefreshing}">
+        <ScrollView>
+            <Grid>
+                <VerticalStackLayout>
+                    <Frame BorderColor="Gray"
+                           CornerRadius="10"
+                           Padding="10"
+                           Margin="30">
+                        <VerticalStackLayout>
+                            <Grid RowDefinitions="*"
+                                  ColumnDefinitions="Auto,*">
+                                <Label Text="{Binding Steps,StringFormat='{0:F2} Schritte noch bis:'}"
+                                       FontSize="20"
+                                       Grid.Column="0"
+                                       HorizontalTextAlignment="Start"/>
+                                <Label Text="{Binding targetsteps}"
+                                       FontSize="20"
+                                       Grid.Column="1"
+                                       HorizontalTextAlignment="End"/>
+                            </Grid>
+                            <Grid RowDefinitions="*"
+                                  ColumnDefinitions="20,*"
+                                  ColumnSpacing="5">
+                            <Image Source="distance.spng"
+                                   HeightRequest="20"
+                                   WidthRequest="20"/>
+                            <Label Text="{Binding Walkeddistance,  StringFormat='{0:F2} km'}"
+                                   Grid.Column="1"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateCommand}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+        
+            <!--Soll ein Diagramm anzeigen. Funktioniert nicht.-->
+                    <Grid>
+                        <lvc:CartesianChart
+                            Series="{Binding Series}">
+                        </lvc:CartesianChart>
+                    </Grid>
+
+                    <Grid RowDefinitions="*"
+                          ColumnDefinitions="*,*">
+                        <Button Text="Create Steps DB"
+                                Command="{Binding CreateStepsCommand}"
+                                IsEnabled="{Binding IsNotBusy}"
+                                Margin="8"/>
+                        <Button Text="Refresh"
+                                Command="{Binding RefreshCommand}"
+                                IsEnabled="{Binding IsNotBusy}"
+                                Grid.Column="1"
+                                Margin="8"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

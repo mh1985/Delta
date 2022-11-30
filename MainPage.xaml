@@ -3,39 +3,22 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:Delta.Views"
             x:Class="Delta.MainPage">
-<!--Diesen Teil der Seite nur sichtbar machen, wenn nicht eingeloggt.-->
-    <!--<ContentPage>
-        <ScrollView>
-            <Grid
-                RowDefinitions="*,*"
-                RowSpacing="25"
-                VerticalOptions="Center"
-                Padding="0,0">
-            
-                <Label Grid.Row="0"
-                    Text="Willkommen bei Delta!"
-                    FontSize="38"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"/>
 
-                <Label Grid.Row="1"
-                    Text="Bitte loggen Sie sich ein oder erstellen Sie einen neuen Account, um fortfahren zu können."
-                    FontSize="24"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"/>
-            </Grid>
-        </ScrollView>
-    </ContentPage>-->       
-<!--Diesen Teil der Seite nur sichtbar machen, wenn eingeloggt.-->
-    <!--<TabBar CurrentItem="{x:Reference todayData}">
-        <ShellContent Title="Letzte Woche"
-                      ContentTemplate="{DataTemplate views:LastWeekDataPage}"/>
-        <ShellContent Title="Gestern"
-                      ContentTemplate="{DataTemplate views:YesterdayDataPage}"/>
-        <ShellContent Title="Heute"
-                      x:Name="todayData"
-                      ContentTemplate="{DataTemplate views:TodayDataPage}"/>
-        <ShellContent Title="Diese Woche"
-                      ContentTemplate="{DataTemplate views:ThisWeekDataPage}"/>
-    </TabBar>-->
+    <TabBar>
+        <Tab Icon="chartbar.png">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:DataPage}"
+                Route="DataPage"/>
+        </Tab>
+        <Tab Icon="drugs.png">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:DrugPage}"
+                Route="DrugPage"/>
+        </Tab>
+        <Tab Title="Test2">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:ShowAllStepsPage}"
+                Route="ShowAllStepsPage"/>
+        </Tab>
+    </TabBar>
 </Shell>

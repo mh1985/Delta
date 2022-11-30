@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -35,8 +35,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="128,128" Color="#99DFB2"/>
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
@@ -49,11 +48,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	  <Compile Remove="Resources\Fonts\FontAwesomeIcons.cs" />
+	</ItemGroup>
+
+	<!--<ItemGroup>
+	  <None Remove="Resources\Images\Icons\chartbar.svg" />
+	  <None Remove="Resources\Images\Icons\distance.svg" />
+	  <None Remove="Resources\Images\Icons\drugs.svg" />
+	  <None Remove="Resources\Splash\splash.svg" />
+	</ItemGroup>-->
+
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0-preview1" />
+	  <PackageReference Include="LiveChartsCore.SkiaSharpView.Maui" Version="2.0.0-beta.602" />
+	  <PackageReference Include="sqlite-net-pcl" Version="1.9.141-beta" />
+	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.3-pre20221111222311" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="SideMenu.xaml">
+	  <MauiXaml Update="Views\DataPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\DocumentPage.xaml">
@@ -68,42 +81,24 @@
 	  <MauiXaml Update="Views\DrugPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\DummySelectDayPage.xaml">
+	  <MauiXaml Update="Views\ShowAllStepsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\DummySelectMonthPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\DummySelectWeekPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\LastWeekDataPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\LogoutPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\TestPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\ThisWeekDataPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\TodayDataPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\YesterdayDataPage.xaml">
+	  <MauiXaml Update="Views\StepsDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Icons\chartbar.svg" />
+	  <MauiImage Include="Resources\Images\Icons\distance.svg" />
+	  <MauiImage Include="Resources\Images\Icons\drugs.svg" />
 	  <MauiImage Include="Resources\Images\TestImagesXRay\foot1.png" />
 	  <MauiImage Include="Resources\Images\TestImagesXRay\foot2.png" />
 	  <MauiImage Include="Resources\Images\TestImagesXRay\foot3.png" />
 	  <MauiImage Include="Resources\Images\TestImagesXRay\foot4.png" />
 	</ItemGroup>
-	
+
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<DefineConstants>WINDOWS</DefineConstants>
 	</PropertyGroup>

@@ -8,8 +8,5 @@
         <ShellContent Title="Bilder"
                       ContentTemplate="{DataTemplate views:DocumentView}"
                       Route="DocumentView"/>
-        <ShellContent Title="Dokumente"
-                      ContentTemplate="{DataTemplate views:TestPage}"
-                      Route="TestPage"/>
     </TabBar>
 </Shell>
